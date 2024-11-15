@@ -6,6 +6,7 @@ import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Questions from "./Questions";
 import NextButton from "./NextButton";
+import Progress from "./Progress";
 // import { type } from "@testing-library/user-event/dist/type";
 const intialState = {
   questions: [],
@@ -14,6 +15,7 @@ const intialState = {
   answer: null,
   points: 0,
 };
+
 function reducer(state, action) {
   switch (action.type) {
     case "gotData":
@@ -60,7 +62,8 @@ function App() {
       .then((data) => dispatch({ type: "gotData", payload: data }))
       .catch((err) => dispatch({ type: "dataFaild" }));
   }, []);
-  const { questions, status, index, answer } = state;
+  const { questions, status, index, answer, points } = state;
+  const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
   return (
     <div className="app">
       <Header />
@@ -72,6 +75,13 @@ function App() {
         )}
         {status === "active" && (
           <>
+            <Progress
+              index={index}
+              numQuestions={questions.length}
+              points={points}
+              maxPoints={maxPoints}
+              answer={answer}
+            />
             <Questions
               question={questions[index]}
               dispatch={dispatch}

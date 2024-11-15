@@ -5,11 +5,14 @@ import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Questions from "./Questions";
-import { type } from "@testing-library/user-event/dist/type";
+import NextButton from "./NextButton";
+// import { type } from "@testing-library/user-event/dist/type";
 const intialState = {
   questions: [],
   status: "loading",
   index: 0,
+  answer: null,
+  points: 0,
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -18,6 +21,22 @@ function reducer(state, action) {
         ...state,
         questions: action.payload,
         status: "ready",
+      };
+    case "newAnswer":
+      const qu = state.questions.at(state.index);
+      return {
+        ...state,
+        answer: action.payload,
+        points:
+          action.payload === qu.correctOption
+            ? state.points + qu.points
+            : state.points,
+      };
+    case "nextQuestion":
+      return {
+        ...state,
+        index: state.index + 1,
+        answer: null,
       };
     case "dataFaild":
       return {
@@ -41,7 +60,7 @@ function App() {
       .then((data) => dispatch({ type: "gotData", payload: data }))
       .catch((err) => dispatch({ type: "dataFaild" }));
   }, []);
-  const { questions, status, index } = state;
+  const { questions, status, index, answer } = state;
   return (
     <div className="app">
       <Header />
@@ -51,7 +70,16 @@ function App() {
         {status === "ready" && (
           <StartScreen numOfQuestions={questions.length} dispatch={dispatch} />
         )}
-        {status === "active" && <Questions question={questions[index]} />}
+        {status === "active" && (
+          <>
+            <Questions
+              question={questions[index]}
+              dispatch={dispatch}
+              answer={answer}
+            />
+            <NextButton dispatch={dispatch} answer={answer} />
+          </>
+        )}
       </Main>
     </div>
   );

@@ -7,6 +7,9 @@ import StartScreen from "./StartScreen";
 import Questions from "./Questions";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
+import FinishPage from "./FinishPage";
+import Footer from "./Footer";
+import Timer from "./Timer";
 // import { type } from "@testing-library/user-event/dist/type";
 const intialState = {
   questions: [],
@@ -14,7 +17,9 @@ const intialState = {
   index: 0,
   answer: null,
   points: 0,
+  secondsRemaining: null,
 };
+const SECS_OER_QUESTION = 15;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -40,6 +45,23 @@ function reducer(state, action) {
         index: state.index + 1,
         answer: null,
       };
+    case "Finish":
+      return {
+        ...state,
+        status: "Finish",
+      };
+    case "restart":
+      return {
+        ...intialState,
+        questions: state.questions,
+        status: "ready",
+      };
+    case "tick":
+      return {
+        ...state,
+        secondsRemaining: state.secondsRemaining - 1,
+        status: state.secondsRemaining === 0 ? "Finish" : state.status,
+      };
     case "dataFaild":
       return {
         ...state,
@@ -49,6 +71,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
+        secondsRemaining: state.questions.length * SECS_OER_QUESTION,
       };
     default:
       throw new Error("Action unkonwn");
@@ -62,7 +85,7 @@ function App() {
       .then((data) => dispatch({ type: "gotData", payload: data }))
       .catch((err) => dispatch({ type: "dataFaild" }));
   }, []);
-  const { questions, status, index, answer, points } = state;
+  const { questions, status, index, answer, points, secondsRemaining } = state;
   const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
   return (
     <div className="app">
@@ -87,8 +110,23 @@ function App() {
               dispatch={dispatch}
               answer={answer}
             />
-            <NextButton dispatch={dispatch} answer={answer} />
+            <Footer>
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+              <NextButton
+                dispatch={dispatch}
+                answer={answer}
+                index={index}
+                numQuestions={questions.length}
+              />
+            </Footer>
           </>
+        )}
+        {status === "Finish" && (
+          <FinishPage
+            points={points}
+            maxPoints={maxPoints}
+            dispatch={dispatch}
+          />
         )}
       </Main>
     </div>

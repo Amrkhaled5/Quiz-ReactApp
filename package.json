@@ -1,7 +1,7 @@
 {
+  "homepage": "https://amrkhaled5.github.io/Quiz-ReactApp",
   "name": "quiz-app",
   "version": "0.1.0",
-  "homepage": "https://amrkhaled5.github.io/Quiz-ReactApp",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

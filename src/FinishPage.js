@@ -7,7 +7,7 @@ function FinishPage({ points, maxPoints, dispatch }) {
   if (percentage >= 0 && percentage < 50) emoji = "😏";
   if (percentage === 0) emoji = "🤦‍♂️";
   return (
-    <>
+    <div className="start">
       <p className="result">
         <span>{emoji}</span>
         You Scored <strong>{points}</strong>
@@ -21,7 +21,7 @@ function FinishPage({ points, maxPoints, dispatch }) {
       >
         Restart Quiz
       </button>
-    </>
+    </div>
   );
 }
 

@@ -10,7 +10,9 @@ import Progress from "./Progress";
 import FinishPage from "./FinishPage";
 import Footer from "./Footer";
 import Timer from "./Timer";
+import questionsData from "./questions.json";
 // import { type } from "@testing-library/user-event/dist/type";
+
 const intialState = {
   questions: [],
   status: "loading",
@@ -79,11 +81,14 @@ function reducer(state, action) {
 }
 function App() {
   const [state, dispatch] = useReducer(reducer, intialState);
+  // useEffect(function () {
+  //   fetch("http://localhost:8000/questions")
+  //     .then((res) => res.json())
+  //     .then((data) => dispatch({ type: "gotData", payload: data }))
+  //     .catch((err) => dispatch({ type: "dataFaild" }));
+  // }, []);
   useEffect(function () {
-    fetch("http://localhost:8000/questions")
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "gotData", payload: data }))
-      .catch((err) => dispatch({ type: "dataFaild" }));
+    dispatch({ type: "gotData", payload: questionsData.questions });
   }, []);
   const { questions, status, index, answer, points, secondsRemaining } = state;
   const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);

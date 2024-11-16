@@ -259,11 +259,7 @@ progress {
   font-size: inherit;
   padding: 0.8rem;
 }
-@media (max-width: 1200px) {
-  .app {
-    height: 50vh;
-  }
-}
+
 @media (max-width: 768px) {
   .main {
     width: 90%;
@@ -337,7 +333,7 @@ progress {
     width: 8rem;
   }
   .app {
-    height: 60vh;
+    height: 90vh;
   }
 }
 @media (max-width: 390px) {

@@ -259,6 +259,11 @@ progress {
   font-size: inherit;
   padding: 0.8rem;
 }
+@media (max-width: 1200px) {
+  .app {
+    height: 50vh;
+  }
+}
 @media (max-width: 768px) {
   .main {
     width: 90%;
@@ -304,6 +309,9 @@ progress {
   .counter {
     margin: 3rem;
   }
+  .app {
+    height: 80vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -327,5 +335,13 @@ progress {
 
   img {
     width: 8rem;
+  }
+  .app {
+    height: 60vh;
+  }
+}
+@media (max-width: 390px) {
+  .app {
+    height: 85vh;
   }
 }

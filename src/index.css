@@ -4,8 +4,8 @@
   --color-medium: #dfeff2;
   --color-light: #f9fbfc;
 
-  --color-theme: #3bc33b;
-  --color-accent: #f34a4a;
+  --color-theme: #2e8b57;
+  --color-accent: #c85050;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
@@ -259,7 +259,11 @@ progress {
   font-size: inherit;
   padding: 0.8rem;
 }
-
+@media (max-width: 1500px) {
+  .app {
+    height: 90vh;
+  }
+}
 @media (max-width: 768px) {
   .main {
     width: 90%;

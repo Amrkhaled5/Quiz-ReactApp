@@ -20,7 +20,13 @@ Check out the deployed application here: [Quiz-ReactApp](https://amrkhaled5.gith
 - **Fake API**: Initially used for local data fetching during development.  
 - **Deployment Ready**: Modified to work seamlessly in production environments.
 
-  ## Getting Started
+## Future Improvements
+- Adding more categories and difficulty levels for the quiz.
+- Implementing a timer for each question.
+- Enhancing UI/UX for better user engagement.
+- Adding a leaderboard to track user performance globally.
+
+## Getting Started
 To run the project locally, follow these steps:
 
 1. **Clone the repository**:
@@ -36,11 +42,6 @@ To run the project locally, follow these steps:
     ```bash
     npm start
     
-## Future Improvements
-- Adding more categories and difficulty levels for the quiz.
-- Implementing a timer for each question.
-- Enhancing UI/UX for better user engagement.
-- Adding a leaderboard to track user performance globally.
 
 ## Contributing
   

@@ -6,13 +6,16 @@ Check out the deployed application here: [Quiz-ReactApp](https://amrkhaled5.gith
 
 
 ## Features
-- **Dynamic State Management**: Uses `useReducer` instead of `useState` for state handling.  
+- **Dynamic State Management**: Uses `useReducer` instead of `useState` for state handling.
+- **context API Integration**: Leverages the Context API for managing and sharing state across components without prop drilling.
 - **Quiz Questions**: Focused on React topics.  
 - **Instant Feedback**: On each submission, the app indicates whether the answer is correct and shows the correct answer.  
 - **Score Tracking**: Displays the current score and the number of questions answered.  
 - **Final Results**: Shows a summary with the final score at the end of the quiz.  
 
 ## Technologies Used
-- **React**: Frontend framework.  
+- **React**: Frontend framework.
+- **contextAPI**: For global state management.
+- **useReducer**: For efficient and organized state handling.
 - **Fake API**: Initially used for local data fetching during development.  
 - **Deployment Ready**: Modified to work seamlessly in production environments. 

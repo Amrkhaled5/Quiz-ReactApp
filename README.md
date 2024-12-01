@@ -18,4 +18,30 @@ Check out the deployed application here: [Quiz-ReactApp](https://amrkhaled5.gith
 - **contextAPI**: For global state management.
 - **useReducer**: For efficient and organized state handling.
 - **Fake API**: Initially used for local data fetching during development.  
-- **Deployment Ready**: Modified to work seamlessly in production environments. 
+- **Deployment Ready**: Modified to work seamlessly in production environments.
+
+  ## Getting Started
+To run the project locally, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/amrkhaled5/Quiz-ReactApp.git
+2. **Navigate to the project directory**:
+    ```bash
+    cd Quiz-ReactApp
+3. **Install dependencies**:
+   ```bash
+   npm install
+4. **Start the development server**:
+    ```bash
+    npm start
+    
+## Future Improvements
+- Adding more categories and difficulty levels for the quiz.
+- Implementing a timer for each question.
+- Enhancing UI/UX for better user engagement.
+- Adding a leaderboard to track user performance globally.
+
+## Contributing
+  
+- Contributions are welcome! Feel free to fork the repository and submit a pull request.
